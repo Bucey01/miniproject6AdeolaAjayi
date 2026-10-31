@@ -65,6 +65,14 @@ The application allows users to register, log in, create tasks, and monitor thei
 
    python manage.py migrate
 
+   python manage.py createsuperuser
+
+
+    Note: The createsuperuser command creates an
+    administrator account that allows access to
+    Django's admin dashboard at http://127.0.0.1:8000/admin/.
+
+
 9. Start the development server:
 
    python manage.py runserver
@@ -74,6 +82,14 @@ The application allows users to register, log in, create tasks, and monitor thei
    http://127.0.0.1:8000/
 
 Note: On Windows, set the DJANGO_SECRET_KEY environment variable using the appropriate shell before running Django.
+
+
+**Python Version Note:** The FHSU Linux development
+environment uses `python` within the activated virtual
+environment. On macOS, `python3` was used to run the
+application and automated tests. Use the appropriate
+Python command for your environment.
+
 
 ### Testing
 The following functionality was tested successfully:
@@ -112,6 +128,27 @@ ChatGPT also helped with GitHub commands, environment configuration, testing pro
 I was responsible for executing commands, incorporating and reviewing suggested code, configuring the development environments, testing the application, troubleshooting issues with AI guidance, and verifying the final results.
 
 AI served as a supporting educational resource throughout the project.
+
+
+### Automated Testing
+
+The Personal Task Manager includes five automated
+Django tests to verify the Task model.
+
+The tests validate:
+- Task creation
+- Task description
+- Default task completion status
+- Task ownership
+- Task string representation
+
+To run the tests:
+
+    python3 manage.py test
+
+All five automated tests passed successfully
+during local development on macOS.
+
 
 ### Course Information
 INF601 - Advanced Programming in Python
