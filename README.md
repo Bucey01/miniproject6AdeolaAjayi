@@ -123,6 +123,22 @@ I used ChatGPT as a learning and development assistance tool. ChatGPT provided e
 
 ChatGPT also helped with GitHub commands, environment configuration, testing procedures, and README documentation.
 
+**Review and Modification of AI-Assisted Work**
+
+I reviewed AI-provided code examples and instructions before
+incorporating them into my project. I adapted the suggested
+configurations to work with my FHSU Linux development environment
+and my personal MacBook.
+
+These changes included adjusting Python commands, configuring
+environment variables, updating Django settings for the FHSU
+development server, and troubleshooting issues encountered
+during implementation and testing.
+
+I tested the application to verify that the incorporated code
+worked as intended.
+
+
 **My Role in the Development Process**
 
 I was responsible for executing commands, incorporating and reviewing suggested code, configuring the development environments, testing the application, troubleshooting issues with AI guidance, and verifying the final results.
