@@ -1,0 +1,35 @@
+{% extends 'tasks/base.html' %}
+
+{% block title %}Dashboard - Personal Task Manager{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>My Task Dashboard</h2>
+        <a href="{% url 'add_task' %}" class="btn btn-primary">
+            Add New Task
+        </a>
+    </div>
+
+    {% if tasks %}
+        <div class="list-group">
+            {% for task in tasks %}
+                <div class="list-group-item">
+                    <h5>{{ task.title }}</h5>
+                    <p>{{ task.description }}</p>
+
+                    {% if task.completed %}
+                        <span class="badge bg-success">Completed</span>
+                    {% else %}
+                        <span class="badge bg-warning text-dark">Pending</span>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-info">
+            You have no tasks yet. Click Add New Task to get started.
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

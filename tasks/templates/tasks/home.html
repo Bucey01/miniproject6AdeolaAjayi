@@ -1,0 +1,87 @@
+{% extends 'tasks/base.html' %}
+
+{% block title %}Home - Personal Task Manager{% endblock %}
+
+{% block content %}
+
+<div class="text-center py-5">
+
+    <h1 class="display-4 fw-bold text-primary">
+        Welcome to Personal Task Manager
+    </h1>
+
+    <p class="lead mt-3">
+        Organize your daily activities, manage tasks,
+        and track your progress in one place.
+    </p>
+
+    {% if user.is_authenticated %}
+
+        <p class="mt-4">
+            Welcome back, {{ user.username }}!
+        </p>
+
+        <a href="{% url 'dashboard' %}"
+           class="btn btn-primary btn-lg">
+            View My Dashboard
+        </a>
+
+    {% else %}
+
+        <a href="{% url 'register' %}"
+           class="btn btn-primary btn-lg mt-3">
+            Get Started
+        </a>
+
+        <a href="{% url 'login' %}"
+           class="btn btn-outline-primary btn-lg mt-3">
+            Login
+        </a>
+
+    {% endif %}
+
+    <div class="mt-4">
+
+        <button type="button"
+                class="btn btn-info"
+                data-bs-toggle="modal"
+                data-bs-target="#aboutModal">
+            About This Application
+        </button>
+
+    </div>
+
+</div>
+
+<div class="row mt-5">
+
+    <div class="col-md-4">
+        <div class="card shadow-sm mb-3">
+            <div class="card-body text-center">
+                <h4>Create Tasks</h4>
+                <p>Add and organize your daily tasks.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow-sm mb-3">
+            <div class="card-body text-center">
+                <h4>Track Progress</h4>
+                <p>Monitor completed and pending tasks.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow-sm mb-3">
+            <div class="card-body text-center">
+                <h4>Stay Organized</h4>
+                <p>Manage your tasks from one dashboard.</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

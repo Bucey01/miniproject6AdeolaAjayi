@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}Personal Task Manager{% endblock %}</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+
+            <a class="navbar-brand" href="{% url 'home' %}">
+                Personal Task Manager
+            </a>
+
+            <div class="navbar-nav ms-auto">
+
+                <a class="nav-link" href="{% url 'home' %}">
+                    Home
+                </a>
+
+                {% if user.is_authenticated %}
+
+                    <a class="nav-link" href="{% url 'dashboard' %}">
+                        Dashboard
+                    </a>
+
+                    <a class="nav-link" href="{% url 'add_task' %}">
+                        Add Task
+                    </a>
+
+                    <form method="post" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-outline-light ms-2">
+                            Logout
+                        </button>
+                    </form>
+
+                {% else %}
+
+                    <a class="nav-link" href="{% url 'login' %}">
+                        Login
+                    </a>
+
+                    <a class="nav-link" href="{% url 'register' %}">
+                        Register
+                    </a>
+
+                {% endif %}
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mt-5">
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-info">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        {% block content %}
+        {% endblock %}
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center mt-5 mb-3 text-muted">
+        <p>INF601 - Advanced Programming in Python</p>
+        <p>Mini Project 6 | Personal Task Manager</p>
+    </footer>
+
+    <!-- Bootstrap Modal -->
+    <div class="modal fade" id="aboutModal" tabindex="-1"
+         aria-labelledby="aboutModalLabel" aria-hidden="true">
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="aboutModalLabel">
+                        About Personal Task Manager
+                    </h5>
+
+                    <button type="button" class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <p>
+                        Personal Task Manager is a Django web application
+                        created for INF601 Mini Project 6.
+                    </p>
+
+                    <p>
+                        Users can register, log in, create tasks,
+                        and manage their personal task lists.
+                    </p>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary"
+                            data-bs-dismiss="modal">
+                        Close
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+</body>
+</html>
