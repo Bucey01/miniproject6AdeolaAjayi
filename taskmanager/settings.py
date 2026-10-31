@@ -24,8 +24,11 @@ SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['dev-student02.fhsucyber.com']
-CSRF_TRUSTED_ORIGINS = ['https://dev-student02.fhsucyber.com']
+ALLOWED_HOSTS = [
+    'dev-student02.fhsucyber.com',
+    'localhost',
+    '127.0.0.1',
+]
 
 
 # Application definition
